@@ -11,12 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 圆点指示器
+ *
  * 作者： 巴掌 on 16/8/23 22:00
  * Github: https://github.com/JeasonWong
  */
 public class PreviewIndicator extends LinearLayout {
 
-    //指示器个数
+    /** 指示器个数 */
     private final int INDICATOR_COUNT = 3;
     private List<ImageView> mImageList = new ArrayList<>();
 

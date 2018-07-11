@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.widget.VideoView;
 
 /**
+ * 视频播放组件
+ *
  * 作者： 巴掌 on 16/8/22 23:00
  * Github: https://github.com/JeasonWong
  */

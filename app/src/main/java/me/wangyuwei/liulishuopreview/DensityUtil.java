@@ -11,6 +11,12 @@ public class DensityUtil {
     private DensityUtil() {
     }
 
+    /**
+     * dip转像素
+     * @param context
+     * @param dpValue
+     * @return
+     */
     public static int dp2px(Context context, float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);

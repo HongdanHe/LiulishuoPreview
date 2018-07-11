@@ -20,15 +20,21 @@ import rx.functions.Action1;
 
 public class MainActivity extends AppCompatActivity {
 
+    /** 视频播放组件 */
     private PreviewVideoView mVideoView;
+    /** 显示下面图片、文本、圆点 */
     private ViewPager mVpImage;
+    /** 圆点指示器 */
     private PreviewIndicator mIndicator;
-
+    /** 装载圆点上面内容（图片）的视图 */
     private List<View> mViewList = new ArrayList<>();
+    /** 圆点上面内容（图片） */
     private int[] mImageResIds = new int[]{R.mipmap.intro_text_1, R.mipmap.intro_text_2, R.mipmap.intro_text_3};
+    /** 适配圆点和上面内容 */
     private CustomPagerAdapter mAdapter;
-
+    /** 页面的下标 */
     private int mCurrentPage = 0;
+    /** RxJava订阅 */
     private Subscription mLoop;
 
     @Override
@@ -87,8 +93,16 @@ public class MainActivity extends AppCompatActivity {
      */
     private void startLoop() {
         if (null != mLoop) {
+            //取消订阅
             mLoop.unsubscribe();
         }
+        /**
+         * 间隔执行
+         *
+         * 第一个参数：代表两个消息发送之间的间隔时间(轮训时间)
+         * 第二个参数：轮训的次数
+         * 第三参数：时间单位：(毫秒，秒，分钟) TimeUtil时间工具类
+         */
         mLoop = Observable.interval(0, 6 * 1000, TimeUnit.MILLISECONDS)
                 .subscribe(new Action1<Long>() {
                     @Override
@@ -109,8 +123,13 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+
+    /**
+     * 适配器（适配圆点和上面内容）
+     */
     public static class CustomPagerAdapter extends PagerAdapter {
 
+        /** 装载圆点上面内容（图片）的视图 */
         private List<View> mViewList;
 
         public CustomPagerAdapter(List<View> viewList) {
